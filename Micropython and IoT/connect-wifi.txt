@@ -1,0 +1,17 @@
+import network
+wifi = 'Hery(2.4GHz)' # your wifi ssid
+password = '44332211' # your wifi password
+print(wifi) # ກວດສອບເກັບຄ່າຊື່ wifi ຖືກບໍ
+print(password) # ກວດສອບ password
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True) 
+wlan.scan() # ຄົ້ນຫາ wifi 
+
+wifilist = wlan.scan() # ເກັບຄ່າ wifi ຮອບໆ
+
+for w in wifilist:
+    print(w[0].decode('uft-8')) # ສະແດງ wifi ຮອບໆ
+
+wlan.isconnected() # ກວດສອບວ່າເຊື່ອມຕໍ່ wifi ຫຼືບໍ
+wlan.connect(wifi, password) # ເຊື່ອມຕໍ່ wifi
+wlan.ifconfig() # ກວສອບ IP
